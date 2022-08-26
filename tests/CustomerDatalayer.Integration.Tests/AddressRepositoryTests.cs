@@ -1,5 +1,6 @@
 using CustomerDatalayer.BusinessEntities;
 using CustomerDatalayer.Repositories;
+using Xunit;
 
 namespace CustomerDatalayer.Integration.Tests
 {

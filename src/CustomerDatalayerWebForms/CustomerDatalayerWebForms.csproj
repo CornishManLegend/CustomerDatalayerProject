@@ -224,6 +224,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\CustomerDatalayer\CustomerDatalayer.csproj">
       <Project>{c161502c-9045-40d4-9ea1-8f51e2aec24c}</Project>
       <Name>CustomerDatalayer</Name>

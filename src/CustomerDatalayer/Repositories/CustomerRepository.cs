@@ -77,9 +77,8 @@ namespace CustomerDatalayer.Repositories
                         };
                     }
                 }
-
-                return new Customers();
             }
+            return null;
         }
 
 
@@ -131,8 +130,9 @@ namespace CustomerDatalayer.Repositories
                 {
                     return Convert.ToInt32(reader["CustomerId"]);
                 }
-                return 0;
+
             }
+            return 0;
         }
 
 

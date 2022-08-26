@@ -110,9 +110,10 @@ namespace CustomerDatalayer.Repositories
                             Country = reader["Country"].ToString()
                         };
                     }
+
                 }
-                return new Addresses();
             }
+            return null;
         }
 
 
