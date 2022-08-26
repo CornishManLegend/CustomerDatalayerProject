@@ -12,5 +12,8 @@ namespace CustomerDatalayer.Interfaces
         TEntity Read(int entityID);
         void Update(TEntity entity);
         void Delete(int entityID);
+        int GetId();
+        void DeleteAll();
+        List<TEntity> GetAll();
     }
 }

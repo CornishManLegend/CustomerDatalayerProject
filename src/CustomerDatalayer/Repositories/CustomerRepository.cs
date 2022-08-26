@@ -119,7 +119,7 @@ namespace CustomerDatalayer.Repositories
         }
 
 
-        public int GetCustomerId()
+        public int GetId()
         {
             using (var connection = GetConnection())
             {
@@ -146,6 +146,33 @@ namespace CustomerDatalayer.Repositories
                     "DELETE FROM Customers",
                     connection);
                 command.ExecuteNonQuery();
+            }
+        }
+
+        public List<Customers> GetAll()
+        {
+            using (var connection = GetConnection())
+            {
+                var customers = new List<Customers>();
+                connection.Open();
+                var command = new SqlCommand("SELECT * FROM [Customers]", connection);
+
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        customers.Add(new Customers
+                        {
+                            CustomerId = (int)reader["CustomerId"],
+                            FirstName = reader["FirstName"].ToString(),
+                            LastName = reader["LastName"].ToString(),
+                            PhoneNumber = reader["PhoneNumber"].ToString(),
+                            Email = reader["Email"].ToString(),
+                            TotalPurchasesAmount = Convert.ToDecimal(reader["TotalPurchasesAmount"])
+                        });
+                    }
+                }
+                return customers;
             }
         }
     }

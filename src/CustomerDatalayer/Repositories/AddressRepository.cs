@@ -185,7 +185,7 @@ namespace CustomerDatalayer.Repositories
         }
 
 
-        public int GetAddressId()
+        public int GetId()
         {
             using (var connection = GetConnection())
             {
@@ -212,5 +212,13 @@ namespace CustomerDatalayer.Repositories
                 command.ExecuteNonQuery();
             }
         }
+
+
+        public List<Addresses> GetAll()
+        {
+            throw new NotImplementedException();
+        }
+
+
     }
 }
