@@ -30,12 +30,12 @@ namespace CustomerDatalayerWebForms
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            var customerIDReq = Convert.ToInt32(Request["customerId"]);
-            if (customerIDReq != 0)
+            var customerIdReq = Convert.ToInt32(Request["customerId"]);
+            if (customerIdReq != 0)
             {
                 if (!IsPostBack)
                 {
-                    var customer = _customerRepository.Read(customerIDReq);
+                    var customer = _customerRepository.Read(customerIdReq);
                     firstName.Text = customer.FirstName;
                     lastName.Text = customer.LastName;
                     phoneNumber.Text = customer.PhoneNumber;
@@ -58,7 +58,14 @@ namespace CustomerDatalayerWebForms
                 Email = email?.Text,
                 TotalPurchasesAmount = Convert.ToDecimal(totalPurchasesAmount?.Text)
             };
-            _customerRepository.Update(customer);
+            if (Convert.ToInt32(Request.QueryString["customerId"]) == 0)
+            {
+                _customerRepository.Create(customer);
+            } else
+            {
+                _customerRepository.Update(customer);
+            }
+
             Response.Redirect("AllCustomersList.aspx");
         }
     }

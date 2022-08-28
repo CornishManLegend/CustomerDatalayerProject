@@ -12,13 +12,16 @@ namespace CustomerDatalayerWebForms
 {
     public partial class AllCustomersList : System.Web.UI.Page
     {
+
         private IRepository<Customers> _customerRepository;
+
         public List<Customers> Customers { get; set; }
 
         public AllCustomersList()
         {
             _customerRepository = new CustomerRepository();
         }
+
         public AllCustomersList(IRepository<Customers> customerRepository)
         {
             _customerRepository = customerRepository;
@@ -35,6 +38,18 @@ namespace CustomerDatalayerWebForms
         {
             LoadAllCustomersFromDatabase();
         }
+
+        protected void OnClickDelete(object sender, EventArgs e)
+        {
+            var customer = new Customers()
+            {
+                CustomerId = Convert.ToInt32(Request.QueryString["customerId"]),
+            };
+            var customerIdReq = Convert.ToInt32(Request.QueryString["customerId"]);
+            _customerRepository.Delete(customer.CustomerId);
+        }
+
+        //CustomerId = Convert.ToInt32(Request.QueryString["customerId"]),
 
 
     }
