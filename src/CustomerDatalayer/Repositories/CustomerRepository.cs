@@ -87,8 +87,8 @@ namespace CustomerDatalayer.Repositories
             using (var connection = GetConnection())
             {
                 connection.Open();
-                var command = new SqlCommand("UPDATE [Customers] SET FirstName = @FirstName WHERE CustomerId = @CustomerId", connection);
-                var customerIDParam = new SqlParameter("@CustomerId", System.Data.SqlDbType.Int)
+                var command = new SqlCommand("UPDATE [Customers] SET FirstName = @FirstName, LastName = @LastName, PhoneNumber = @PhoneNumber, Email = @Email, TotalPurchasesAmount = @TotalPurchasesAmount  WHERE CustomerId = @CustomerId", connection);
+                var customerIdParam = new SqlParameter("@CustomerId", System.Data.SqlDbType.Int)
                 {
                     Value = entity.CustomerId
                 };
@@ -96,8 +96,28 @@ namespace CustomerDatalayer.Repositories
                 {
                     Value = entity.FirstName
                 };
-                command.Parameters.Add(customerIDParam);
+                var customerLastNameParam = new SqlParameter("@LastName", SqlDbType.NVarChar, 50)
+                {
+                    Value = entity.LastName
+                };
+                var customerPhoneNumberParam = new SqlParameter("@PhoneNumber", SqlDbType.NVarChar, 15)
+                {
+                    Value = entity.PhoneNumber
+                };
+                var customerEmailParam = new SqlParameter("@Email", SqlDbType.NVarChar, 100)
+                {
+                    Value = entity.Email
+                };
+                var customerTotalPurchasesAmountParam = new SqlParameter("@TotalPurchasesAmount", SqlDbType.Decimal)
+                {
+                    Value = entity.TotalPurchasesAmount
+                };
+                command.Parameters.Add(customerIdParam);
                 command.Parameters.Add(customerFirstNameParam);
+                command.Parameters.Add(customerLastNameParam);
+                command.Parameters.Add(customerPhoneNumberParam);
+                command.Parameters.Add(customerEmailParam);
+                command.Parameters.Add(customerTotalPurchasesAmountParam);
                 command.ExecuteNonQuery();
             }
         }
@@ -109,11 +129,11 @@ namespace CustomerDatalayer.Repositories
             {
                 connection.Open();
                 var command = new SqlCommand("DELETE FROM [Customers] WHERE CustomerId = @CustomerId", connection);
-                var customerIDParam = new SqlParameter("@CustomerId", System.Data.SqlDbType.Int)
+                var customerIdParam = new SqlParameter("@CustomerId", System.Data.SqlDbType.Int)
                 {
                     Value = entityID
                 };
-                command.Parameters.Add(customerIDParam);
+                command.Parameters.Add(customerIdParam);
                 command.ExecuteNonQuery();
             }
         }

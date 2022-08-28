@@ -20,6 +20,7 @@
                     <td><%=customer.PhoneNumber%></td>
                     <td><%=customer.Email%></td>
                     <td><%=customer.TotalPurchasesAmount%></td>
+                    <td><a class="btn btn-default" href="CustomerManage?customerId=<%=customer.CustomerId%>">Edit</a></td>
                 </tr>
             <%} %>
     </table>
