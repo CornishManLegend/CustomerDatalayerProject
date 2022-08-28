@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Customers" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AllCustomersList.aspx.cs" Inherits="CustomerDatalayerWebForms.AllCustomersList" %>
+﻿<%@ Page Title="Customers List" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AllCustomersList.aspx.cs" Inherits="CustomerDatalayerWebForms.AllCustomersList" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <h1 class="text-center"><%=Title %></h1>
@@ -25,7 +25,8 @@
                         <td><%=customer.Email%></td>
                         <td><%=customer.TotalPurchasesAmount%></td>
                         <td><a class="btn btn-default" href="CustomerManage?customerId=<%=customer.CustomerId%>">Edit</a></td>
-                        <td><asp:Button class="btn btn-danger" Text="Delete" runat="server" OnClick="OnClickDelete"/></td>
+                        <td><a class="btn btn-danger" href="CustomerDelete?customerId=<%=customer.CustomerId%>">Delete</a></td>
+
                     </tr>
                 <%} %>
         </tbody>

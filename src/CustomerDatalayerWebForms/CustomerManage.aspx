@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Customer manage" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="CustomerManage.aspx.cs" Inherits="CustomerDatalayerWebForms.CustomerManage" %>
+﻿<%@ Page Title="Customer Edit" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="CustomerManage.aspx.cs" Inherits="CustomerDatalayerWebForms.CustomerManage" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 

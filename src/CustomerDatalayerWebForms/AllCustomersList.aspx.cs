@@ -39,15 +39,19 @@ namespace CustomerDatalayerWebForms
             LoadAllCustomersFromDatabase();
         }
 
-        protected void OnClickDelete(object sender, EventArgs e)
+        protected void Delete_Click(object sender, EventArgs e)
         {
-            var customer = new Customers()
-            {
-                CustomerId = Convert.ToInt32(Request.QueryString["customerId"]),
-            };
-            var customerIdReq = Convert.ToInt32(Request.QueryString["customerId"]);
-            _customerRepository.Delete(customer.CustomerId);
+            var customerIDReq = Convert.ToInt32(Request.QueryString["customerId"]);
+            _customerRepository.Delete(customerIDReq);
         }
+
+
+
+        //protected void OnClickDelete(object sender, EventArgs e)
+        //{
+        //    var customerIDReq = Convert.ToInt32(Request.QueryString["customerId"]);
+        //    _customerRepository.Delete(customerIDReq);
+        //}
 
         //CustomerId = Convert.ToInt32(Request.QueryString["customerId"]),
 
