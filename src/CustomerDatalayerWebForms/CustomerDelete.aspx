@@ -5,9 +5,9 @@
 
     <div class="text-center">
         <p></p>
-        <h2>Are you sure you want to delete customer <%=Request.QueryString["customerId"] %>?</h2>
+        <h2>Are you sure you want to remove customer <%=Request.QueryString["customerId"] %>?</h2>
         <asp:Button class="btn btn-primary" Text="No" runat="server" OnClick="OnClickNo"/>
-        <asp:Button class="btn btn-primary" Text="Delete" runat="server" OnClick="OnClickDelete"/>
+        <asp:Button class="btn btn-primary" Text="Remove" runat="server" OnClick="OnClickDelete"/>
     </div>
 
 

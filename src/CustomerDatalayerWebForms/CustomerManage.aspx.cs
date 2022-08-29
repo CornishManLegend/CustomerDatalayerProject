@@ -58,6 +58,8 @@ namespace CustomerDatalayerWebForms
                 Email = email?.Text,
                 TotalPurchasesAmount = Convert.ToDecimal(totalPurchasesAmount?.Text)
             };
+            
+
             if (Convert.ToInt32(Request.QueryString["customerId"]) == 0)
             {
                 _customerRepository.Create(customer);
@@ -65,8 +67,8 @@ namespace CustomerDatalayerWebForms
             {
                 _customerRepository.Update(customer);
             }
-
             Response.Redirect("AllCustomersList.aspx");
+
         }
     }
 }

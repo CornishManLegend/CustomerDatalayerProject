@@ -119,6 +119,7 @@ namespace CustomerDatalayer.Repositories
                 command.Parameters.Add(customerEmailParam);
                 command.Parameters.Add(customerTotalPurchasesAmountParam);
                 command.ExecuteNonQuery();
+
             }
         }
 

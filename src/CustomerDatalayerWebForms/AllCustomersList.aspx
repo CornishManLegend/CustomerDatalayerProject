@@ -25,13 +25,13 @@
                         <td><%=customer.Email%></td>
                         <td><%=customer.TotalPurchasesAmount%></td>
                         <td><a class="btn btn-default" href="CustomerManage?customerId=<%=customer.CustomerId%>">Edit</a></td>
-                        <td><a class="btn btn-danger" href="CustomerDelete?customerId=<%=customer.CustomerId%>">Delete</a></td>
+                        <td><a class="btn btn-default" href="CustomerDelete?customerId=<%=customer.CustomerId%>">Remove</a></td>
 
                     </tr>
                 <%} %>
         </tbody>
     </table>
     <div class="text-center">
-        <a runat="server" class="btn btn-success" href="~/CustomerManage">Add new customer</a>
+        <a runat="server" class="btn btn-success" href="~/CustomerManage">Add a New Customer</a>
     </div>
 </asp:Content>
