@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="Addresses List" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AddressesList.aspx.cs" Inherits="CustomerDatalayerWebForms.AddressesList" %>
-<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+<asp:Content ID="Content5" ContentPlaceHolderID="MainContent" runat="server">
     <h1 class="text-center"><%=Title %></h1>
     <table class="table">
         <thead>
@@ -18,7 +18,6 @@
         <tbody>
             <%foreach(var address in Addresses) 
                 {%>
-                
                     <tr>
                         <td><%=address.AddressId%></td>
                         <td><%=address.CustomerId%></td>
@@ -29,15 +28,13 @@
                         <td><%=address.PostalCode%></td>
                         <td><%=address.AddrState%></td>
                         <td><%=address.Country%></td>
-
-                        <%--<td><a class="btn btn-default" href="AddressManage?addressId=<%=address.AddressId%>">Edit</a></td>--%>
-                        <%--<td><a class="btn btn-default" href="AddressDelete?addressId=<%=address.AddressId%>">Remove</a></td>--%>
-
+                        <td><a class="btn btn-default" href="~/AddressManage?addressId=<%=address.AddressId%>">Edit</a></td>
+                        <td><a class="btn btn-default" href="~/AddressDelete?addressId=<%=address.AddressId%>">Remove</a></td>
                     </tr>
                 <%} %>
         </tbody>
     </table>
     <div class="text-center">
-        <a runat="server" class="btn btn-success" href="~/CustomerManage">Add a New Customer</a>
+        <a runat="server" class="btn btn-success" href="~/AddressManage">Add a New Address</a>
     </div>
 </asp:Content>

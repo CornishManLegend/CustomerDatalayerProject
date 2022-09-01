@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="Customer Delete" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="CustomerDelete.aspx.cs" Inherits="CustomerDatalayerWebForms.CustomerDelete" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+<asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
 
     <h1 class="text-center"><%=Title %></h1>
 
