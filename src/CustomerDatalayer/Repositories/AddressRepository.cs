@@ -208,7 +208,7 @@ namespace CustomerDatalayer.Repositories
             {
                 connection.Open();
 
-                var command = new SqlCommand("DELETE FROM Customers", connection);
+                var command = new SqlCommand("DELETE FROM [Addresses]", connection);
                 command.ExecuteNonQuery();
             }
         }
@@ -216,7 +216,32 @@ namespace CustomerDatalayer.Repositories
 
         public List<Addresses> GetAll()
         {
-            throw new NotImplementedException();
+            using (var connection = GetConnection())
+            {
+                var addresses = new List<Addresses>();
+                connection.Open();
+                var command = new SqlCommand("SELECT * FROM [Addresses]", connection);
+
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        addresses.Add(new Addresses
+                        {
+                            AddressId = Convert.ToInt32(reader["AddressId"]),
+                            CustomerId = Convert.ToInt32(reader["CustomerId"]),
+                            AddressLine1 = reader["AddressLine1"].ToString(),
+                            AddressLine2 = reader["AddressLine2"].ToString(),
+                            AddressType = reader["AddressType"].ToString(),
+                            City = reader["City"].ToString(),
+                            PostalCode = reader["PostalCode"].ToString(),
+                            AddrState = reader["AddrState"].ToString(),
+                            Country = reader["Country"].ToString()
+                        });
+                    }
+                }
+                return addresses;
+            }
         }
 
 
