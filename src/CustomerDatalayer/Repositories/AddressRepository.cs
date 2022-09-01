@@ -123,6 +123,10 @@ namespace CustomerDatalayer.Repositories
             {
                 connection.Open();
                 var command = new SqlCommand("UPDATE Addresses SET CustomerId = @CustomerId, AddressLine1 = @AddressLine1, AddressLine2 = @AddressLine2, AddressType = @AddressType, City = @City, PostalCode = @PostalCode, AddrState = @AddrState, Country = @Country WHERE AddressId = @AddressId", connection);
+                var addressAddressIdParam = new SqlParameter("@AddressId", System.Data.SqlDbType.Int)
+                {
+                    Value = entity.AddressId
+                };
                 var addressCustomerIDParam = new SqlParameter("@CustomerId", SqlDbType.Int)
                 {
                     Value = entity.CustomerId
@@ -155,6 +159,7 @@ namespace CustomerDatalayer.Repositories
                 {
                     Value = entity.Country
                 };
+                command.Parameters.Add(addressAddressIdParam);
                 command.Parameters.Add(addressCustomerIDParam);
                 command.Parameters.Add(addressAddressLineParam);
                 command.Parameters.Add(addressAddressLine2Param);
