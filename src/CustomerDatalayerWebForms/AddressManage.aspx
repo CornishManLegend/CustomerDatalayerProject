@@ -70,6 +70,7 @@
 
         <div class="text-center">
             <asp:Button class="btn btn-primary" Text="Save" runat="server" OnClick="OnClickSave"/>
+            <a class="btn btn-primary" href="/AddressesList.aspx">Cancel</a>
         </div>
     </div>
 </asp:Content>

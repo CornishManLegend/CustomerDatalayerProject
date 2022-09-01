@@ -39,6 +39,7 @@
 
         <div class="text-center">
             <asp:Button class="btn btn-primary" Text="Save" runat="server" OnClick="OnClickSave"/>
+            <a class="btn btn-primary" href="/">Cancel</a>
         </div>
     </div>
 
