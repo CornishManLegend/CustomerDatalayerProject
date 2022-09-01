@@ -67,7 +67,7 @@ namespace CustomerDatalayerWebForms
             {
                 _customerRepository.Update(customer);
             }
-            Response.Redirect("AllCustomersList.aspx");
+            Response.Redirect("~/");
 
         }
     }

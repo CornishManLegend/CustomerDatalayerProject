@@ -40,12 +40,12 @@ namespace CustomerDatalayerWebForms
         public void OnClickDelete(object sender, EventArgs e)
         {
             _customerRepository.Delete(Convert.ToInt32(Request.QueryString["customerId"]));
-            Response.Redirect("AllCustomersList.aspx");
+            Response.Redirect("~/");
         }
 
         public void OnClickNo(object sender, EventArgs e)
         {
-            Response.Redirect("AllCustomersList.aspx");
+            Response.Redirect("~/");
         }
     }
 }
