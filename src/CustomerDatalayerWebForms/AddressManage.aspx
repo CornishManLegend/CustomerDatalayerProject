@@ -27,10 +27,7 @@
 
         <div class="form-group">
             <asp:Label Text="Address Type" runat="server"></asp:Label>
-            <asp:TextBox ID="addressType" class="form-control center-block" runat="server"></asp:TextBox>
-            <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="Field Address Type can not be blank" ControlToValidate="addressType" ForeColor="Red"></asp:RequiredFieldValidator>
-            <asp:RegularExpressionValidator ID="RegularExpressionValidator5" runat="server" ControlToValidate="addressType" ErrorMessage="The Address Type can be either Shipping or Billing" ForeColor="Red" ValidationExpression="^(Shipping|Billing)$">
-            </asp:RegularExpressionValidator>
+            <asp:DropDownList ID="addressType" class="form-control center-block" runat="server"></asp:DropDownList>
         </div>
 
         <div class="form-group">

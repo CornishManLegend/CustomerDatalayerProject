@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Services.Description;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -35,6 +36,9 @@ namespace CustomerDatalayerWebForms
                 customerId.Items.Add(customer.CustomerId.ToString());
             }
 
+            addressType.Items.Add(Enum.GetName(typeof(AddrTypes), 0));
+            addressType.Items.Add(Enum.GetName(typeof(AddrTypes), 1));
+
             var addressIdReq = Convert.ToInt32(Request["addressId"]);
             if (addressIdReq != 0)
             {
@@ -45,7 +49,7 @@ namespace CustomerDatalayerWebForms
                     customerId.Text = Convert.ToString(address.CustomerId);
                     addressLine1.Text = address.AddressLine1;
                     addressLine2.Text = address.AddressLine2;
-                    addressType.Text = address.AddressType;
+                    addressType.Text = address.AddressType.ToString();
                     city.Text = address.City;
                     postalCode.Text = address.PostalCode.ToString();
                     state.Text = address.AddrState;
@@ -63,7 +67,7 @@ namespace CustomerDatalayerWebForms
                 CustomerId = Convert.ToInt32(customerId.SelectedValue),
                 AddressLine1 = addressLine1.Text,
                 AddressLine2 = addressLine2.Text,
-                AddressType = addressType.Text,
+                AddressTypeAsString = addressType.Text,
                 City = city.Text,
                 PostalCode = postalCode.Text,
                 AddrState = state.Text,
