@@ -35,6 +35,6 @@
         </tbody>
     </table>
     <div class="text-center">
-        <a runat="server" class="btn btn-success" href="~/AddressManage">Add a New Address</a>
+        <a runat="server" class="btn btn-success" href="~/AddressAdd">Add a New Address</a>
     </div>
 </asp:Content>

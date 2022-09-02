@@ -106,10 +106,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
+    <Content Include="AddressAdd.aspx" />
     <Content Include="AddressDelete.aspx" />
     <Content Include="AddressEdit.aspx" />
     <Content Include="AddressesList.aspx" />
-    <Content Include="AddressManage.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -165,6 +165,13 @@
     <Content Include="Site.Mobile.Master" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddressAdd.aspx.cs">
+      <DependentUpon>AddressAdd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AddressAdd.aspx.designer.cs">
+      <DependentUpon>AddressAdd.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AddressDelete.aspx.cs">
       <DependentUpon>AddressDelete.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -185,13 +192,6 @@
     </Compile>
     <Compile Include="AddressesList.aspx.designer.cs">
       <DependentUpon>AddressesList.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="AddressManage.aspx.cs">
-      <DependentUpon>AddressManage.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="AddressManage.aspx.designer.cs">
-      <DependentUpon>AddressManage.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="About.aspx.cs">

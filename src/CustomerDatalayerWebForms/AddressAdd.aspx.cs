@@ -5,24 +5,23 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using System.Web.Services.Description;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace CustomerDatalayerWebForms
 {
-    public partial class AddressManage : System.Web.UI.Page
+    public partial class AddressAdd : System.Web.UI.Page
     {
         private IRepository<Addresses> _addressRepository;
         private IRepository<Customers> _customerRepository;
 
-        public AddressManage()
+        public AddressAdd()
         {
             _addressRepository = new AddressRepository();
             _customerRepository = new CustomerRepository();
         }
 
-        public AddressManage(IRepository<Addresses> addressRepository)
+        public AddressAdd(IRepository<Addresses> addressRepository)
         {
             _addressRepository = addressRepository;
         }

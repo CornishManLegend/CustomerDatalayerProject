@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Address Edit" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AddressManage.aspx.cs" Inherits="CustomerDatalayerWebForms.AddressManage" %>
+﻿<%@ Page Title="Add New Address" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AddressAdd.aspx.cs" Inherits="CustomerDatalayerWebForms.AddressAdd" %>
 <asp:Content ID="Content7" ContentPlaceHolderID="MainContent" runat="server">
 
     <h1 class="text-center"><%=Title %></h1>

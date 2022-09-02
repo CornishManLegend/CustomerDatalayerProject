@@ -11,7 +11,7 @@ namespace CustomerDatalayerWebForms
 {
 
 
-    public partial class AddressManage
+    public partial class AddressAdd
     {
 
         /// <summary>
