@@ -7,10 +7,7 @@
 
         <div class="form-group">
             <asp:Label Text="Customer ID" runat="server"></asp:Label>
-            <asp:TextBox ID="customerId" class="form-control center-block" runat="server"></asp:TextBox>
-            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Field Customer ID can not be blank" ControlToValidate="customerId" ForeColor="Red"></asp:RequiredFieldValidator>
-            <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="customerId" ErrorMessage="You only have to enter an integer" ForeColor="Red" ValidationExpression="^\d+$">
-            </asp:RegularExpressionValidator>
+            <asp:DropDownList ID="customerId" class="form-control center-block" runat="server"></asp:DropDownList>
         </div>
 
         <div class="form-group">

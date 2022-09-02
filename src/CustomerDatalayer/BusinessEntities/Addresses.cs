@@ -18,4 +18,5 @@ namespace CustomerDatalayer.BusinessEntities
         public string AddrState { get; set; } = string.Empty;
         public string Country { get; set; } = string.Empty;
     }
+
 }

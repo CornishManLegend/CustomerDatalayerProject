@@ -13,10 +13,12 @@ namespace CustomerDatalayerWebForms
     public partial class AddressManage : System.Web.UI.Page
     {
         private IRepository<Addresses> _addressRepository;
+        private IRepository<Customers> _customerRepository;
 
         public AddressManage()
         {
             _addressRepository = new AddressRepository();
+            _customerRepository = new CustomerRepository();
         }
 
         public AddressManage(IRepository<Addresses> addressRepository)
@@ -26,6 +28,13 @@ namespace CustomerDatalayerWebForms
 
         protected void Page_Load(object sender, EventArgs e)
         {
+
+            var customers = _customerRepository.GetAll();
+            foreach (var customer in customers)
+            {
+                customerId.Items.Add(customer.CustomerId.ToString());
+            }
+
             var addressIdReq = Convert.ToInt32(Request["addressId"]);
             if (addressIdReq != 0)
             {
@@ -33,7 +42,7 @@ namespace CustomerDatalayerWebForms
                 {
                     var address = _addressRepository.Read(addressIdReq);
 
-                    customerId.Text = address.CustomerId.ToString();
+                    customerId.Text = Convert.ToString(address.CustomerId);
                     addressLine1.Text = address.AddressLine1;
                     addressLine2.Text = address.AddressLine2;
                     addressType.Text = address.AddressType;
@@ -51,7 +60,7 @@ namespace CustomerDatalayerWebForms
             var address = new Addresses()
             {
                 AddressId = Convert.ToInt32(Request.QueryString["addressId"]),
-                CustomerId = Convert.ToInt32(customerId.Text),
+                CustomerId = Convert.ToInt32(customerId.SelectedValue),
                 AddressLine1 = addressLine1.Text,
                 AddressLine2 = addressLine2.Text,
                 AddressType = addressType.Text,
