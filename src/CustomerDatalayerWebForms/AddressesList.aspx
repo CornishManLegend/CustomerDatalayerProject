@@ -28,7 +28,7 @@
                         <td><%=address.PostalCode%></td>
                         <td><%=address.AddrState%></td>
                         <td><%=address.Country%></td>
-                        <td><a class="btn btn-default" href="AddressManage?addressId=<%=address.AddressId%>">Edit</a></td>
+                        <td><a class="btn btn-default" href="AddressEdit?addressId=<%=address.AddressId%>">Edit</a></td>
                         <td><a class="btn btn-default" href="AddressDelete?addressId=<%=address.AddressId%>">Remove</a></td>
                     </tr>
                 <%} %>

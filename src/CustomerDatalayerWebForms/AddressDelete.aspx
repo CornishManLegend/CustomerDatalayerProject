@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="Address Delete" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AddressDelete.aspx.cs" Inherits="CustomerDatalayerWebForms.AddressDelete" %>
 <asp:Content ID="Content6" ContentPlaceHolderID="MainContent" runat="server">
-        <h1 class="text-center"><%=Title %></h1>
+    <h1 class="text-center"><%=Title %></h1>
 
     <div class="text-center">
         <p></p>
