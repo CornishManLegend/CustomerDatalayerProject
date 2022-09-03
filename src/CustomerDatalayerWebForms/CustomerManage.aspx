@@ -8,14 +8,14 @@
         <div class="form-group">
             <asp:Label Text="First name" runat="server"></asp:Label>
             <asp:TextBox ID="firstName" class="form-control center-block" runat="server"></asp:TextBox>
-            <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="firstName" ErrorMessage="The length of the first name can be from 3 to 50 characters" ForeColor="Red" ValidationExpression="^[a-zA-Z0-9'@&#.\s]{0,50}$">
+            <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="firstName" ErrorMessage="The length of the first name cannot be more than 50 characters" ForeColor="Red" ValidationExpression="^[a-zA-Z0-9'@&#.\s]{0,50}$">
             </asp:RegularExpressionValidator>
         </div>
         <div class="form-group">
             <asp:Label Text="Last name" runat="server"></asp:Label>
             <asp:TextBox ID="lastName" class="form-control center-block" runat="server"></asp:TextBox>
             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Last Name can not be blank" ControlToValidate="lastName" ForeColor="Red"></asp:RequiredFieldValidator>
-            <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="lastName" ErrorMessage="The length of the last name can be from 3 to 50 characters" ForeColor="Red" ValidationExpression="^[a-zA-Z0-9'@&#.\s]{0,50}$">
+            <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="lastName" ErrorMessage="The length of the last name cannot be more than 50 characters" ForeColor="Red" ValidationExpression="^[a-zA-Z0-9'@&#.\s]{0,50}$">
             </asp:RegularExpressionValidator>
         </div>
         <div class="form-group">

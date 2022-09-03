@@ -24,6 +24,7 @@
                         <td><%=customer.PhoneNumber%></td>
                         <td><%=customer.Email%></td>
                         <td><%=customer.TotalPurchasesAmount%></td>
+                        <td><a class="btn btn-default" href="NotesList?customerId=<%=customer.CustomerId%>">Notes</a></td>
                         <td><a class="btn btn-default" href="CustomerManage?customerId=<%=customer.CustomerId%>">Edit</a></td>
                         <td><a class="btn btn-default" href="CustomerDelete?customerId=<%=customer.CustomerId%>">Remove</a></td>
 

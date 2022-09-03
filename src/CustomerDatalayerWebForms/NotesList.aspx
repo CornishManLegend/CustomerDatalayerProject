@@ -4,27 +4,24 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Note ID</th>
-                <th>Customer ID</th>
                 <th>Note</th>
+                <th>Note Edit</th>
+                <th>Note Remove</th>
             </tr>
         </thead>
         <tbody>
             <%foreach(var note in Notes) 
                 {%>
-                
                     <tr>
-                        <td><%=note.CustomerId%></td>
-                        <td><%=note.CustomerId%></td>
-                        <td><%=note.%></td>
-                        <td><a class="btn btn-default" href="CustomerManage?customerId=<%=customer.CustomerId%>">Edit</a></td>
-                        <td><a class="btn btn-default" href="CustomerDelete?customerId=<%=customer.CustomerId%>">Remove</a></td>
-
+                        <td><%=note.Note%></td>
+                        <td><a class="btn btn-default" href="NoteEdit?customerId=<%=note.CustomerId %>&noteId=<%=note.NoteId%>">Edit</a></td>
+                        <td><a class="btn btn-default" href="NoteDelete?customerId=<%=note.CustomerId %>&noteId=<%=note.NoteId%>">Remove</a></td>
                     </tr>
                 <%} %>
         </tbody>
     </table>
     <div class="text-center">
-        <a runat="server" class="btn btn-success" href="~/CustomerManage">Add a New Note</a>
+        <a runat="server" class="btn btn-success" href="/">Back to Customers List</a>
+        <asp:Button Text="Add a New Note" runat="server" class="btn btn-success" OnClick="OnClickAddNote" />
     </div>
 </asp:Content>

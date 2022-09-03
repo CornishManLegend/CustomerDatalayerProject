@@ -130,6 +130,8 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="NoteDelete.aspx" />
+    <Content Include="NoteEdit.aspx" />
     <Content Include="NotesList.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -226,6 +228,20 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="NoteDelete.aspx.cs">
+      <DependentUpon>NoteDelete.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="NoteDelete.aspx.designer.cs">
+      <DependentUpon>NoteDelete.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="NoteEdit.aspx.cs">
+      <DependentUpon>NoteEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="NoteEdit.aspx.designer.cs">
+      <DependentUpon>NoteEdit.aspx</DependentUpon>
     </Compile>
     <Compile Include="NotesList.aspx.cs">
       <DependentUpon>NotesList.aspx</DependentUpon>

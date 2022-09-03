@@ -57,7 +57,8 @@ namespace CustomerDatalayer.Repositories
                         return new Notes
                         {
                             CustomerId = (int)reader["CustomerId"],
-                            Note = reader["Note"].ToString()
+                            Note = reader["Note"].ToString(),
+                            NoteId = entityID
                         };
                     }
                     return null;
@@ -147,6 +148,37 @@ namespace CustomerDatalayer.Repositories
                 var notes = new List<Notes>();
                 connection.Open();
                 var command = new SqlCommand("SELECT * FROM [Notes]", connection);
+
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        notes.Add(new Notes
+                        {
+                            NoteId = Convert.ToInt32(reader["NoteId"]),
+                            CustomerId = Convert.ToInt32(reader["CustomerId"]),
+                            Note = reader["Note"].ToString(),
+                        });
+                    }
+                }
+                return notes;
+            }
+        }
+
+
+        public List<Notes> GetCustomerNotes(int entityID)
+        {
+            using (var connection = GetConnection())
+            {
+                var notes = new List<Notes>();
+                connection.Open();
+                var command = new SqlCommand("SELECT * FROM [Notes] WHERE CustomerId = @CustomerId", connection);
+
+                var customerIdParam = new SqlParameter("@CustomerId", SqlDbType.Int)
+                {
+                    Value = entityID
+                };
+                command.Parameters.Add(customerIdParam);
 
                 using (var reader = command.ExecuteReader())
                 {
