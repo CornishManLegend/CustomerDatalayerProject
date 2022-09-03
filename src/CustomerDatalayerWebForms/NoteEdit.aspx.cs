@@ -19,10 +19,10 @@ namespace CustomerDatalayerWebForms
             _noteRepository = new NoteRepository();
         }
 
-        //public NoteEdit(IRepository<Notes> noteRepository)
-        //{
-        //    _noteRepository = noteRepository;
-        //}
+        public NoteEdit(NoteRepository noteRepository)
+        {
+            _noteRepository = noteRepository;
+        }
 
         protected void Page_Load(object sender, EventArgs e)
         {

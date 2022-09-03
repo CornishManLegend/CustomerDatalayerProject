@@ -24,10 +24,7 @@ namespace CustomerDatalayerWebForms
         }
         protected void Page_Load(object sender, EventArgs e)
         {
-            //var customerIdReq = Convert.ToInt32(Request.QueryString["customerId"]);
-            //var noteIdReq = Convert.ToInt32(Request.QueryString["noteId"]);
-            //_noteRepository.Delete(noteIdReq);
-            //Response.Redirect($"~/NotesList?customerId={customerIdReq}");
+
         }
 
         public void OnClickDelete(object sender, EventArgs e)

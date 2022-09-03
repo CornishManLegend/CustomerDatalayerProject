@@ -12,7 +12,6 @@ namespace CustomerDatalayerWebForms
 {
     public partial class NotesList : System.Web.UI.Page
     {
-        //private IRepository<Notes> _noteRepository;
         private NoteRepository _noteRepository;
 
         public List<Notes> Notes { get; set; }
@@ -21,21 +20,6 @@ namespace CustomerDatalayerWebForms
         {
             _noteRepository = new NoteRepository();
         }
-
-        //public NotesList(IRepository<Notes> noteRepository)
-        //{
-        //    _noteRepository = noteRepository;
-        //}
-
-        //public void LoadAllNotesFromDatabase()
-        //{
-        //    Notes = _noteRepository.GetAll();
-        //}
-
-        //protected void Page_Load(object sender, EventArgs e)
-        //{
-        //    LoadAllNotesFromDatabase();
-        //}
 
         protected void Page_Load(object sender, EventArgs e)
         {
