@@ -32,9 +32,4 @@ namespace CustomerDatalayer.BusinessEntities
         public string Country { get; set; } = string.Empty;
     }
 
-    public enum AddrTypes
-    {
-        Shipping = 0,
-        Billing = 1
-    }
 }
