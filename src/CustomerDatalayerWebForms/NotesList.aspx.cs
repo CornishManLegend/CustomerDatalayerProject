@@ -14,7 +14,7 @@ namespace CustomerDatalayerWebForms
     {
         private NoteRepository _noteRepository;
 
-        public List<Notes> Notes { get; set; }
+        public List<Note> Notes { get; set; }
 
         public NotesList()
         {

@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 
 namespace CustomerDatalayer.Repositories
 {
-    public class CustomerRepository : BaseRepository, IRepository<Customers>
+    public class CustomerRepository : BaseRepository, IRepository<Customer>
     {
-        public void Create(Customers entity)
+        public void Create(Customer entity)
         {
             using (var connection = GetConnection())
             {
@@ -52,7 +52,7 @@ namespace CustomerDatalayer.Repositories
         }
 
 
-        public Customers Read(int entityID)
+        public Customer Read(int entityID)
         {
             using (var connection = GetConnection())
             {
@@ -67,8 +67,9 @@ namespace CustomerDatalayer.Repositories
                 {
                     if (reader.Read())
                     {
-                        return new Customers
+                        return new Customer
                         {
+                            CustomerId = Convert.ToInt32(reader["CustomerId"]),
                             FirstName = reader["FirstName"].ToString(),
                             LastName = reader["LastName"].ToString(),
                             PhoneNumber = reader["PhoneNumber"].ToString(),
@@ -82,7 +83,7 @@ namespace CustomerDatalayer.Repositories
         }
 
 
-        public void Update(Customers entity)
+        public void Update(Customer entity)
         {
             using (var connection = GetConnection())
             {
@@ -129,13 +130,27 @@ namespace CustomerDatalayer.Repositories
             using (var connection = GetConnection())
             {
                 connection.Open();
-                var command = new SqlCommand("DELETE FROM [Customers] WHERE CustomerId = @CustomerId", connection);
-                var customerIdParam = new SqlParameter("@CustomerId", System.Data.SqlDbType.Int)
+                var command1 = new SqlCommand("DELETE FROM [Addresses] WHERE CustomerId = @CustomerId", connection);
+                var command2 = new SqlCommand("DELETE FROM [Notes] WHERE CustomerId = @CustomerId", connection);
+                var command3 = new SqlCommand("DELETE FROM [Customers] WHERE CustomerId = @CustomerId", connection);
+                var customerIdParam1 = new SqlParameter("@CustomerId", System.Data.SqlDbType.Int)
                 {
                     Value = entityID
                 };
-                command.Parameters.Add(customerIdParam);
-                command.ExecuteNonQuery();
+                var customerIdParam2 = new SqlParameter("@CustomerId", System.Data.SqlDbType.Int)
+                {
+                    Value = entityID
+                };
+                var customerIdParam3 = new SqlParameter("@CustomerId", System.Data.SqlDbType.Int)
+                {
+                    Value = entityID
+                };
+                command1.Parameters.Add(customerIdParam1);
+                command1.ExecuteNonQuery();
+                command2.Parameters.Add(customerIdParam2);
+                command2.ExecuteNonQuery();
+                command3.Parameters.Add(customerIdParam3);
+                command3.ExecuteNonQuery();
             }
         }
 
@@ -147,13 +162,13 @@ namespace CustomerDatalayer.Repositories
                 connection.Open();
                 var command = new SqlCommand("SELECT CustomerId FROM Customers", connection);
                 var reader = command.ExecuteReader();
-                if (reader.Read())
+                int lastCustomerId = 0;
+                while (reader.Read())
                 {
-                    return Convert.ToInt32(reader["CustomerId"]);
+                    lastCustomerId = Convert.ToInt32(reader["CustomerId"]);
                 }
-
+                return lastCustomerId;
             }
-            return 0;
         }
 
 
@@ -162,19 +177,27 @@ namespace CustomerDatalayer.Repositories
             using (var connection = GetConnection())
             {
                 connection.Open();
-
-                var command = new SqlCommand(
+                var command1 = new SqlCommand(
+                    "DELETE FROM Notes",
+                    connection);
+                command1.ExecuteNonQuery();
+                var command2 = new SqlCommand(
+                    "DELETE FROM Addresses",
+                    connection);
+                command2.ExecuteNonQuery();
+                var command3 = new SqlCommand(
                     "DELETE FROM Customers",
                     connection);
-                command.ExecuteNonQuery();
+                command3.ExecuteNonQuery();
             }
         }
 
-        public List<Customers> GetAll()
+
+        public List<Customer> GetAll()
         {
             using (var connection = GetConnection())
             {
-                var customers = new List<Customers>();
+                var customers = new List<Customer>();
                 connection.Open();
                 var command = new SqlCommand("SELECT * FROM [Customers]", connection);
 
@@ -182,7 +205,7 @@ namespace CustomerDatalayer.Repositories
                 {
                     while (reader.Read())
                     {
-                        customers.Add(new Customers
+                        customers.Add(new Customer
                         {
                             CustomerId = (int)reader["CustomerId"],
                             FirstName = reader["FirstName"].ToString(),

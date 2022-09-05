@@ -13,16 +13,16 @@ namespace CustomerDatalayerWebForms
     public partial class AllCustomersList : System.Web.UI.Page
     {
 
-        private IRepository<Customers> _customerRepository;
+        private IRepository<Customer> _customerRepository;
 
-        public List<Customers> Customers { get; set; }
+        public List<Customer> Customers { get; set; }
 
         public AllCustomersList()
         {
             _customerRepository = new CustomerRepository();
         }
 
-        public AllCustomersList(IRepository<Customers> customerRepository)
+        public AllCustomersList(IRepository<Customer> customerRepository)
         {
             _customerRepository = customerRepository;
         }

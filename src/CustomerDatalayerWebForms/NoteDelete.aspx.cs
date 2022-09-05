@@ -12,13 +12,13 @@ namespace CustomerDatalayerWebForms
 {
     public partial class NoteDelete : System.Web.UI.Page
     {
-        private IRepository<Notes> _noteRepository;
+        private IRepository<Note> _noteRepository;
         public NoteDelete()
         {
             _noteRepository = new NoteRepository();
         }
 
-        public NoteDelete(IRepository<Notes> noteRepository)
+        public NoteDelete(IRepository<Note> noteRepository)
         {
             _noteRepository = noteRepository;
         }

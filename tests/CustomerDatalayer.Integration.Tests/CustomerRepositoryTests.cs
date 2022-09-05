@@ -1,8 +1,11 @@
-﻿using CustomerDatalayer.BusinessEntities;
+﻿using Castle.Core.Resource;
+using CustomerDatalayer.BusinessEntities;
 using CustomerDatalayer.Repositories;
+using FluentAssertions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using Xunit;
@@ -26,75 +29,126 @@ namespace CustomerDatalayer.Integration.Tests
         [Fact]
         public void ShouldBeAbleToCreateCustomer()
         {
-            var repository = new CustomerRepository();
-            var customers = new Customers()
-            {
-                FirstName = "John",
-                LastName = "Wayne",
-                PhoneNumber = "+123456789111111",
-                Email = "johnWayne@gmail.com",
-                TotalPurchasesAmount = 11,
-            };
-            repository.Create(customers);
+            var customer = Fixture.CreateMockCustomer();
+            Assert.NotNull(customer);
+            Assert.Equal("Maria", customer.FirstName);
+            Assert.Equal("Waynenen", customer.LastName);
+            Assert.Equal("mariaWaynenen@gmail.com", customer.Email);
+            Assert.Equal("123456789444444", customer.PhoneNumber);
+            Assert.Equal(10, customer.TotalPurchasesAmount);
         }
 
 
         [Fact]
         public void ShouldBeAbleToReadCustomer()
         {
-            Fixture.DeleteAll();
+            Fixture.CreateMockCustomer();
             var repository = Fixture.CreateCustomerRepository();
-            Assert.NotNull(repository.Read(repository.GetCustomerId()));
+            var readedCustomer = repository.Read(repository.GetId());
+            Assert.NotNull(readedCustomer);
+            Assert.Equal("Maria", readedCustomer.FirstName);
+            Assert.Equal("Waynenen", readedCustomer.LastName);
+            Assert.Equal("mariaWaynenen@gmail.com", readedCustomer.Email);
+            Assert.Equal("123456789444444", readedCustomer.PhoneNumber);
+            Assert.Equal(10, readedCustomer.TotalPurchasesAmount);
+
         }
 
 
         [Fact]
         public void ShouldBeAbleToUpdateCustomer()
         {
-            Fixture.DeleteAll();
-            var customers = Fixture.CreateMockCustomer();
+            Fixture.CreateMockCustomer();
             var repository = Fixture.CreateCustomerRepository();
-            customers.PhoneNumber = "+123456789555554";
-
-            repository.Update(customers);
+            var readLastEddedCustomer = repository.Read(repository.GetId());
+            readLastEddedCustomer.LastName = "Nona";
+            repository.Update(readLastEddedCustomer);
+            var result = repository.Read(repository.GetId()).LastName;
+            Assert.Equal("Nona", result);
         }
 
         [Fact]
         public void ShouldBeAbleToDeleteCustomer()
         {
-            Fixture.DeleteAll();
             var repository = Fixture.CreateCustomerRepository();
+            var readLastEddedCustomer = repository.Read(repository.GetId());
+            int lastEddedCustomerID = readLastEddedCustomer.CustomerId;
+            repository.Delete(lastEddedCustomerID);
+            Assert.Null(repository.Read(lastEddedCustomerID));
+        }
 
-            repository.Delete(1);
+
+        [Fact]
+        public void ShouldBeAbleToDeleteAllCustomers()
+        {
+            var repository = Fixture.CreateCustomerRepository();
+            int lastEddedCustomerID = repository.GetId();
+            repository.DeleteAll();
+            Assert.Null(repository.Read(lastEddedCustomerID));
+        }
+
+
+        [Fact]
+        public void ShouldBeAbleToGetAllCustomers()
+        {
+            var repository = Fixture.CreateCustomerRepository();
+            repository.DeleteAll();
+            Fixture.CreateMockCustomer();
+            Fixture.CreateMockCustomer();
+            Fixture.CreateMockCustomer();
+            var allCustomers = repository.GetAll();
+            foreach (Customer customer in allCustomers)
+            {
+                Assert.Equal("123456789444444", customer.PhoneNumber);
+            }
         }
     }
 
-
     public class CustomersRepositoryFixture
     {
-        public void DeleteAll()
+        public Customer CreateMockCustomer()
         {
+            List<Address> adressList = new List<Address>();
+            Address address = new Address
+            {
+                CustomerId = 1,
+                AddressLine1 = "Mulholland Drive",
+                AddressLine2 = "13/1",
+                AddressType = AddrTypes.Billing,
+                City = "Los Angeles",
+                PostalCode = "90012",
+                AddrState = "Washington",
+                Country = "USA"
+            };
+            adressList.Add(address);
+
+
+            List<Note> notesList = new List<Note>();
+            Note note = new Note
+            {
+                NoteId = 1,
+                CustomerId = 1,
+                NoteRecord = "some note"
+            };
+            notesList.Add(note);
+
             var repository = new CustomerRepository();
-            repository.DeleteAll();
-        }
-        public Customers CreateMockCustomer()
-        {
-            var customers = new Customers
+            Customer customer = new Customer
             {
                 FirstName = "Maria",
-                LastName = "Wayne",
-                PhoneNumber = "+123456789444444",
-                Email = "mariaWayne@gmail.com",
-                TotalPurchasesAmount = 100,
+                LastName = "Waynenen",
+                Addresses = adressList,
+                Notes = notesList,
+                PhoneNumber = "123456789444444",
+                Email = "mariaWaynenen@gmail.com",
+                TotalPurchasesAmount = 10
             };
-            var customerRepository = new CustomerRepository();
-            customerRepository.Create(customers);
-            return customers;
+            repository.Create(customer);
+            return customer;
+
         }
-        public CustomerRepository CreateCustomerRepository()
-        {
-            return new CustomerRepository();
-        }
+
+        public CustomerRepository CreateCustomerRepository() => new CustomerRepository();
     }
 
 }

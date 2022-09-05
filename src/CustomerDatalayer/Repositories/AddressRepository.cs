@@ -11,9 +11,9 @@ using System.Threading.Tasks;
 namespace CustomerDatalayer.Repositories
 {
 
-    public class AddressRepository : BaseRepository, IRepository<Addresses>
+    public class AddressRepository : BaseRepository, IRepository<Address>
     {
-        public void Create(Addresses entity)
+        public void Create(Address entity)
         {
             using (var connection = GetConnection())
             {
@@ -83,7 +83,7 @@ namespace CustomerDatalayer.Repositories
             }
         }
 
-        public Addresses Read(int entityID)
+        public Address Read(int entityID)
         {
             using (var connection = GetConnection())
             {
@@ -98,7 +98,7 @@ namespace CustomerDatalayer.Repositories
                 {
                     if (reader.Read())
                     {
-                        return new Addresses
+                        return new Address
                         {
                             CustomerId = Convert.ToInt32(reader["CustomerId"]),
                             AddressLine1 = reader["AddressLine1"].ToString(),
@@ -117,7 +117,7 @@ namespace CustomerDatalayer.Repositories
         }
 
 
-        public void Update(Addresses entity)
+        public void Update(Address entity)
         {
             using (var connection = GetConnection())
             {
@@ -220,11 +220,11 @@ namespace CustomerDatalayer.Repositories
         }
 
 
-        public List<Addresses> GetAll()
+        public List<Address> GetAll()
         {
             using (var connection = GetConnection())
             {
-                var addresses = new List<Addresses>();
+                var addresses = new List<Address>();
                 connection.Open();
                 var command = new SqlCommand("SELECT * FROM [Addresses]", connection);
 
@@ -232,7 +232,7 @@ namespace CustomerDatalayer.Repositories
                 {
                     while (reader.Read())
                     {
-                        addresses.Add(new Addresses
+                        addresses.Add(new Address
                         {
                             AddressId = Convert.ToInt32(reader["AddressId"]),
                             CustomerId = Convert.ToInt32(reader["CustomerId"]),

@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 
 namespace CustomerDatalayer.Repositories
 {
-    public class NoteRepository : BaseRepository, IRepository<Notes>
+    public class NoteRepository : BaseRepository, IRepository<Note>
     {
-        public void Create(Notes entity)
+        public void Create(Note entity)
         {
             using (var connection = GetConnection())
             {
@@ -26,7 +26,7 @@ namespace CustomerDatalayer.Repositories
                 };
                 var noteParam = new SqlParameter("@Note", SqlDbType.NVarChar, 255)
                 {
-                    Value = entity.Note
+                    Value = entity.NoteRecord
                 };
                 command.Parameters.Add(customerIdParam);
                 command.Parameters.Add(noteParam);
@@ -37,7 +37,7 @@ namespace CustomerDatalayer.Repositories
         }
 
 
-        public Notes Read(int entityID)
+        public Note Read(int entityID)
         {
             using (var connection = GetConnection())
             {
@@ -54,10 +54,10 @@ namespace CustomerDatalayer.Repositories
                 {
                     if (reader.Read())
                     {
-                        return new Notes
+                        return new Note
                         {
                             CustomerId = (int)reader["CustomerId"],
-                            Note = reader["Note"].ToString(),
+                            NoteRecord = reader["Note"].ToString(),
                             NoteId = entityID
                         };
                     }
@@ -67,7 +67,7 @@ namespace CustomerDatalayer.Repositories
         }
 
 
-        public void Update(Notes entity)
+        public void Update(Note entity)
         {
             using (var connection = GetConnection())
             {
@@ -86,7 +86,7 @@ namespace CustomerDatalayer.Repositories
                 };
                 var noteParam = new SqlParameter("@Note", SqlDbType.NVarChar, 255)
                 {
-                    Value = entity.Note
+                    Value = entity.NoteRecord
                 };
                 command.Parameters.Add(noteIdParam);
                 command.Parameters.Add(customerIdParam);
@@ -141,11 +141,11 @@ namespace CustomerDatalayer.Repositories
         }
 
 
-        public List<Notes> GetAll()
+        public List<Note> GetAll()
         {
             using (var connection = GetConnection())
             {
-                var notes = new List<Notes>();
+                var notes = new List<Note>();
                 connection.Open();
                 var command = new SqlCommand("SELECT * FROM [Notes]", connection);
 
@@ -153,11 +153,11 @@ namespace CustomerDatalayer.Repositories
                 {
                     while (reader.Read())
                     {
-                        notes.Add(new Notes
+                        notes.Add(new Note
                         {
                             NoteId = Convert.ToInt32(reader["NoteId"]),
                             CustomerId = Convert.ToInt32(reader["CustomerId"]),
-                            Note = reader["Note"].ToString(),
+                            NoteRecord = reader["Note"].ToString(),
                         });
                     }
                 }
@@ -166,11 +166,11 @@ namespace CustomerDatalayer.Repositories
         }
 
 
-        public List<Notes> GetCustomerNotes(int entityID)
+        public List<Note> GetCustomerNotes(int entityID)
         {
             using (var connection = GetConnection())
             {
-                var notes = new List<Notes>();
+                var notes = new List<Note>();
                 connection.Open();
                 var command = new SqlCommand("SELECT * FROM [Notes] WHERE CustomerId = @CustomerId", connection);
 
@@ -184,11 +184,11 @@ namespace CustomerDatalayer.Repositories
                 {
                     while (reader.Read())
                     {
-                        notes.Add(new Notes
+                        notes.Add(new Note
                         {
                             NoteId = Convert.ToInt32(reader["NoteId"]),
                             CustomerId = Convert.ToInt32(reader["CustomerId"]),
-                            Note = reader["Note"].ToString(),
+                            NoteRecord = reader["Note"].ToString(),
                         });
                     }
                 }

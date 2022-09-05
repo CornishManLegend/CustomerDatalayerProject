@@ -12,8 +12,8 @@ namespace CustomerDatalayerWebForms
 {
     public partial class AddressAdd : System.Web.UI.Page
     {
-        private IRepository<Addresses> _addressRepository;
-        private IRepository<Customers> _customerRepository;
+        private IRepository<Address> _addressRepository;
+        private IRepository<Customer> _customerRepository;
 
         public AddressAdd()
         {
@@ -21,7 +21,7 @@ namespace CustomerDatalayerWebForms
             _customerRepository = new CustomerRepository();
         }
 
-        public AddressAdd(IRepository<Addresses> addressRepository)
+        public AddressAdd(IRepository<Address> addressRepository)
         {
             _addressRepository = addressRepository;
         }
@@ -60,7 +60,7 @@ namespace CustomerDatalayerWebForms
 
         public void OnClickSave(object sender, EventArgs e)
         {
-            var address = new Addresses()
+            var address = new Address()
             {
                 AddressId = Convert.ToInt32(Request.QueryString["addressId"]),
                 CustomerId = Convert.ToInt32(customerId.SelectedValue),

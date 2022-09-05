@@ -15,14 +15,14 @@ namespace CustomerDatalayerWebForms
     public partial class CustomerManage : System.Web.UI.Page
     {
 
-        private IRepository<Customers> _customerRepository;
+        private IRepository<Customer> _customerRepository;
 
         public CustomerManage()
         {
             _customerRepository = new CustomerRepository();
         }
 
-        public CustomerManage(IRepository<Customers> customerRepository)
+        public CustomerManage(IRepository<Customer> customerRepository)
         {
             _customerRepository = customerRepository;
         }
@@ -49,7 +49,7 @@ namespace CustomerDatalayerWebForms
 
         public void OnClickSave(object sender, EventArgs e)
         {
-            var customer = new Customers()
+            var customer = new Customer()
             {
                 CustomerId = Convert.ToInt32(Request.QueryString["customerId"]),
                 FirstName = firstName?.Text,

@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace CustomerDatalayer.BusinessEntities
 {
-    public class Notes
+    public class Note
     {
         public int NoteId { get; set; }
         public int CustomerId { get; set; }
-        public string Note { get; set; }
+        public string NoteRecord { get; set; }
     }
 }

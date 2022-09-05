@@ -13,14 +13,14 @@ namespace CustomerDatalayerWebForms
     public partial class AddressDelete : System.Web.UI.Page
     {
 
-        private IRepository<Addresses> _addressRepository;
+        private IRepository<Address> _addressRepository;
 
         public AddressDelete()
         {
             _addressRepository = new AddressRepository();
         }
 
-        public AddressDelete(IRepository<Addresses> addressRepository)
+        public AddressDelete(IRepository<Address> addressRepository)
         {
             _addressRepository = addressRepository;
         }

@@ -12,16 +12,16 @@ namespace CustomerDatalayerWebForms
 {
     public partial class AddressesList : System.Web.UI.Page
     {
-        private IRepository<Addresses> _addressRepository;
+        private IRepository<Address> _addressRepository;
 
-        public List<Addresses> Addresses { get; set; }
+        public List<Address> Addresses { get; set; }
 
         public AddressesList()
         {
             _addressRepository = new AddressRepository();
         }
 
-        public AddressesList(IRepository<Addresses> addressRepository)
+        public AddressesList(IRepository<Address> addressRepository)
         {
             _addressRepository = addressRepository;
         }

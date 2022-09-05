@@ -9,6 +9,4 @@
         <asp:Button class="btn btn-primary" Text="No" runat="server" OnClick="OnClickNo"/>
         <asp:Button class="btn btn-primary" Text="Remove" runat="server" OnClick="OnClickDelete"/>
     </div>
-
-
 </asp:Content>

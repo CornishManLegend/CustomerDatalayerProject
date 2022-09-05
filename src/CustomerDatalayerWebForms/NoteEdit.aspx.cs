@@ -37,7 +37,7 @@ namespace CustomerDatalayerWebForms
                 if (noteIdReq != 0)
                 {
                     var noteItem = _noteRepository.Read(noteIdReq);
-                    noteText.Text = noteItem.Note;
+                    noteText.Text = noteItem.NoteRecord;
                 }
             }
 
@@ -49,11 +49,11 @@ namespace CustomerDatalayerWebForms
             var customerIdReq = Convert.ToInt32(Request.QueryString["customerId"]);
             var noteIdReq = Convert.ToInt32(Request.QueryString["noteId"]);
 
-            var note = new Notes()
+            var note = new Note()
             {
                 NoteId = noteIdReq,
                 CustomerId = customerIdReq,
-                Note = noteText.Text
+                NoteRecord = noteText.Text
             };
             if (Request.QueryString["noteId"] == null)
                 _noteRepository.Create(note);

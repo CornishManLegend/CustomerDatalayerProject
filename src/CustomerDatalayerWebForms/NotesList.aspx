@@ -13,7 +13,7 @@
             <%foreach(var note in Notes) 
                 {%>
                     <tr>
-                        <td><%=note.Note%></td>
+                        <td><%=note.NoteRecord%></td>
                         <td><a class="btn btn-default" href="NoteEdit?customerId=<%=note.CustomerId %>&noteId=<%=note.NoteId%>">Edit</a></td>
                         <td><a class="btn btn-default" href="NoteDelete?customerId=<%=note.CustomerId %>&noteId=<%=note.NoteId%>">Remove</a></td>
                     </tr>

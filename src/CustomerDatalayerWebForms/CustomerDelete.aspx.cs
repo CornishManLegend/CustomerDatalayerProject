@@ -12,34 +12,27 @@ namespace CustomerDatalayerWebForms
 {
     public partial class CustomerDelete : System.Web.UI.Page
     {
-        private IRepository<Customers> _customerRepository;
+        private IRepository<Customer> _customerRepository;
 
         public CustomerDelete()
         {
             _customerRepository = new CustomerRepository();
         }
 
-        public CustomerDelete(IRepository<Customers> customerRepository)
+        public CustomerDelete(IRepository<Customer> customerRepository)
         {
             _customerRepository = customerRepository;
         }
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            var customerIdReq = Convert.ToInt32(Request["customerId"]);
-            if (customerIdReq != 0)
-            {
-                if (!IsPostBack)
-                {
-                    var customer = _customerRepository.Read(customerIdReq);
 
-                }
-            }
         }
 
         public void OnClickDelete(object sender, EventArgs e)
         {
-            _customerRepository.Delete(Convert.ToInt32(Request.QueryString["customerId"]));
+            var customerIdReq = Convert.ToInt32(Request["customerId"]);
+            _customerRepository.Delete(customerIdReq);
             Response.Redirect("~/");
         }
 
