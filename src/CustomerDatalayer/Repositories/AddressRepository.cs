@@ -252,5 +252,43 @@ namespace CustomerDatalayer.Repositories
         }
 
 
+
+        public List<Address> GetCustomerAddresses(int entityID)
+        {
+            using (var connection = GetConnection())
+            {
+                var addresses = new List<Address>();
+                connection.Open();
+                var command = new SqlCommand("SELECT * FROM [Addresses] WHERE CustomerId = @CustomerId", connection);
+
+                var customerIdParam = new SqlParameter("@CustomerId", SqlDbType.Int)
+                {
+                    Value = entityID
+                };
+                command.Parameters.Add(customerIdParam);
+
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        addresses.Add(new Address
+                        {
+                            AddressId = Convert.ToInt32(reader["AddressId"]),
+                            CustomerId = Convert.ToInt32(reader["CustomerId"]),
+                            AddressLine1 = reader["AddressLine1"].ToString(),
+                            AddressLine2 = reader["AddressLine2"].ToString(),
+                            AddressTypeAsString = reader["AddressType"].ToString(),
+                            City = reader["City"].ToString(),
+                            PostalCode = reader["PostalCode"].ToString(),
+                            AddrState = reader["AddrState"].ToString(),
+                            Country = reader["Country"].ToString()
+                        });
+                    }
+                }
+                return addresses;
+            }
+        }
+
+
     }
 }
