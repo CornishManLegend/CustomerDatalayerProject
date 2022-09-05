@@ -6,11 +6,11 @@ namespace CustomerLibrary.Interfaces
 {
     public interface ICustomerService
     {
-        CustomerClass GetCustomer(int id);
-        CustomerClass Create(CustomerClass customer);
+        Customer GetCustomer(int id);
+        Customer Create(Customer customer);
         void DeleteCustomer(int id);
-        void UpdateCustomer(CustomerClass customer);
-        IReadOnlyCollection<CustomerClass> GetCustomers();
+        void UpdateCustomer(Customer customer);
+        IReadOnlyCollection<Customer> GetCustomers();
         IReadOnlyCollection<Address> GetAllAddresses(int id);
         IReadOnlyCollection<Note> GetAllNotes(int id);
 
