@@ -79,16 +79,6 @@ namespace CustomerDatalayer.Integration.Tests
 
 
         [Fact]
-        public void ShouldBeAbleToDeleteAllCustomers()
-        {
-            var repository = Fixture.CreateCustomerRepository();
-            int lastEddedCustomerID = repository.GetId();
-            repository.DeleteAll();
-            Assert.Null(repository.Read(lastEddedCustomerID));
-        }
-
-
-        [Fact]
         public void ShouldBeAbleToGetAllCustomers()
         {
             var repository = Fixture.CreateCustomerRepository();
@@ -102,6 +92,18 @@ namespace CustomerDatalayer.Integration.Tests
                 Assert.Equal("123456789444444", customer.PhoneNumber);
             }
         }
+
+
+        [Fact]
+        public void ShouldBeAbleToDeleteAllCustomers()
+        {
+            var repository = Fixture.CreateCustomerRepository();
+            int lastEddedCustomerID = repository.GetId();
+            repository.DeleteAll();
+            Assert.Null(repository.Read(lastEddedCustomerID));
+        }
+
+
     }
 
     public class CustomersRepositoryFixture

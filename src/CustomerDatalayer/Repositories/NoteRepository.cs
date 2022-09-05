@@ -113,6 +113,23 @@ namespace CustomerDatalayer.Repositories
         }
 
 
+        public int GetCustomerId()
+        {
+            using (var connection = GetConnection())
+            {
+                connection.Open();
+                var command = new SqlCommand("SELECT CustomerId FROM Customers", connection);
+                var reader = command.ExecuteReader();
+                int lastCustomerId = 0;
+                while (reader.Read())
+                {
+                    lastCustomerId = Convert.ToInt32(reader["CustomerId"]);
+                }
+                return lastCustomerId;
+            }
+        }
+
+
         public int GetId()
         {
             using (var connection = GetConnection())
@@ -120,12 +137,13 @@ namespace CustomerDatalayer.Repositories
                 connection.Open();
                 var command = new SqlCommand("SELECT NoteId FROM Notes", connection);
                 var reader = command.ExecuteReader();
-                if (reader.Read())
+                int lastNoteId = 0;
+                while (reader.Read())
                 {
-                    return Convert.ToInt32(reader["NoteId"]);
+                    lastNoteId = Convert.ToInt32(reader["NoteId"]);
                 }
+                return lastNoteId;
             }
-            return 0;
         }
 
 

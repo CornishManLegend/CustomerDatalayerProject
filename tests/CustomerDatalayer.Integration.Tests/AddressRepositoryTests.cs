@@ -66,23 +66,12 @@ namespace CustomerDatalayer.Integration.Tests
         [Fact]
         public void ShouldBeAbleToDeleteAddress()
         {
-            //Fixture.DeleteAll();
             Fixture.CreateMockAddress();
             var repository = Fixture.CreateAddressRepository();
             var lastAddedAddressId = repository.GetId();
             repository.Delete(lastAddedAddressId);
             Assert.Null(repository.Read(lastAddedAddressId));
 
-        }
-
-
-        [Fact]
-        public void ShouldBeAbleToDeleteAllAddresses()
-        {
-            var repository = Fixture.CreateAddressRepository();
-            int lastAddedAddressId = repository.GetId();
-            repository.DeleteAll();
-            Assert.Null(repository.Read(lastAddedAddressId));
         }
 
 
@@ -99,6 +88,16 @@ namespace CustomerDatalayer.Integration.Tests
             {
                 Assert.Equal("13/1", address.AddressLine2);
             }
+        }
+
+
+        [Fact]
+        public void ShouldBeAbleToDeleteAllAddresses()
+        {
+            var repository = Fixture.CreateAddressRepository();
+            int lastAddedAddressId = repository.GetId();
+            repository.DeleteAll();
+            Assert.Null(repository.Read(lastAddedAddressId));
         }
 
 
