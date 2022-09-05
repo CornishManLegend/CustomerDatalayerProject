@@ -2,7 +2,7 @@ using CustomerDatalayer.BusinessEntities;
 using System.Collections.Generic;
 using System.Deployment.Internal;
 
-namespace CustomerLibrary.Interfaces
+namespace CustomerDatalayer.Interfaces
 {
     public interface ICustomerService
     {

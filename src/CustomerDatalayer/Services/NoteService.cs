@@ -6,9 +6,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CustomerLibrary.Interfaces;
 
-namespace CustomerLibrary.Services
+namespace CustomerDatalayer.Services
 {
     public class NoteService : INoteService
     {
@@ -40,7 +39,7 @@ namespace CustomerLibrary.Services
         }
         public IReadOnlyCollection<Note> GetNotes(int id)
         {
-            var notes = _noteRepository.GetAllCustomerNotes(id);
+            var notes = _noteRepository.GetCustomerNotes(id);
 
             return notes;
         }

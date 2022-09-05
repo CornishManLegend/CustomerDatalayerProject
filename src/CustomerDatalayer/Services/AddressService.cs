@@ -6,9 +6,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CustomerLibrary.Interfaces;
 
-namespace CustomerLibrary.Services
+namespace CustomerDatalayer.Services
 {
     public class AddressService : IAddressService
     {
@@ -40,7 +39,7 @@ namespace CustomerLibrary.Services
         }
         public IReadOnlyCollection<Address> GetAddresses(int id)
         {
-            var addresses = _addressRepository.GetAllCustomerAdresses(id);
+            var addresses = _addressRepository.GetCustomerAddresses(id);
 
             return addresses;
         }

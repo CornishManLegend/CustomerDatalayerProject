@@ -3,9 +3,8 @@ using CustomerDatalayer.Repositories;
 using CustomerDatalayer.Interfaces;
 using System;
 using System.Collections.Generic;
-using CustomerLibrary.Interfaces;
 
-namespace CustomerLibrary.Services
+namespace CustomerDatalayer.Services
 {
     public class CustomerService : ICustomerService
     {

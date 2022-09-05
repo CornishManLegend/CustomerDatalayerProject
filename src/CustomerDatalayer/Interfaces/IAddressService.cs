@@ -2,7 +2,7 @@ using CustomerDatalayer.BusinessEntities;
 using System.Collections.Generic;
 
 
-namespace CustomerLibrary.Interfaces
+namespace CustomerDatalayer.Interfaces
 {
     public interface IAddressService
     {
