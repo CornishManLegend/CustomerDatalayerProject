@@ -100,6 +100,7 @@ namespace CustomerDatalayer.Repositories
                     {
                         return new Address
                         {
+                            AddressId = Convert.ToInt32(reader["AddressId"]),
                             CustomerId = Convert.ToInt32(reader["CustomerId"]),
                             AddressLine1 = reader["AddressLine1"].ToString(),
                             AddressLine2 = reader["AddressLine2"].ToString(),
@@ -178,14 +179,14 @@ namespace CustomerDatalayer.Repositories
             using (var connection = GetConnection())
             {
                 connection.Open();
-
                 var command = new SqlCommand("SELECT CustomerId FROM Customers", connection);
                 var reader = command.ExecuteReader();
-                if (reader.Read())
+                int lastCustomerId = 0;
+                while (reader.Read())
                 {
-                    return Convert.ToInt32(reader["CustomerId"]);
+                    lastCustomerId = Convert.ToInt32(reader["CustomerId"]);
                 }
-                return 0;
+                return lastCustomerId;
             }
         }
 
@@ -196,14 +197,14 @@ namespace CustomerDatalayer.Repositories
             using (var connection = GetConnection())
             {
                 connection.Open();
-
                 var command = new SqlCommand("SELECT AddressId FROM Addresses", connection);
                 var reader = command.ExecuteReader();
-                if (reader.Read())
+                int lastAddressId = 0;
+                while (reader.Read())
                 {
-                    return Convert.ToInt32(reader["AddressId"]);
+                    lastAddressId = Convert.ToInt32(reader["AddressId"]);
                 }
-                return 0;
+                return lastAddressId;
             }
         }
 
