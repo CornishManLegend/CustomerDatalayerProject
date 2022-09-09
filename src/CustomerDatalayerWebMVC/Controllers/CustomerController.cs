@@ -7,6 +7,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
+using System.Reflection;
+using System.Dynamic;
 
 namespace CustomerDatalayerWebMVC.Controllers
 {
@@ -23,10 +26,14 @@ namespace CustomerDatalayerWebMVC.Controllers
         {
             _customerService = customerService;
         }
+
         // GET: Customer
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
-            return View();
+            int pageSize = 10;
+            int pageNumber = (page ?? 1);
+            var customers = _customerService.GetCustomers();
+            return View(customers.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: Customer/Details/5

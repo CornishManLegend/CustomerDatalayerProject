@@ -22,7 +22,8 @@ namespace CustomerDatalayerWebMVC.Controllers
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            //ViewBag.Title = "Contact2";
+            ViewBag.Message = "Your contact page1.";
 
             return View();
         }
