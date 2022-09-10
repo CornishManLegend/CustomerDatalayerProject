@@ -89,23 +89,17 @@ namespace CustomerDatalayerWebMVC.Controllers
         // GET: Customer/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            var customer = _customerService.GetCustomer(id);
+            return View(customer);
         }
 
         // POST: Customer/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(int id, Customer customer)
         {
-            try
-            {
-                // TODO: Add delete logic here
+            _customerService.DeleteCustomer(id);
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            return RedirectToAction("Index");
         }
     }
 }
