@@ -39,7 +39,14 @@ namespace CustomerDatalayerWebMVC.Controllers
         // GET: Customer/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            dynamic model = new ExpandoObject();
+            model.Id = id;
+            model.Customer = _customerService.GetCustomer(id);
+            var notes = _customerService.GetAllNotes(id);
+            var addresses = _customerService.GetAllAddresses(id);
+            model.Notes = notes;
+            model.Addresses = addresses;
+            return View(model);
         }
 
         // GET: Customer/Create
