@@ -74,23 +74,22 @@ namespace CustomerDatalayerWebMVC.Controllers
         // GET: Customer/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            var customer = _customerService.GetCustomer(id);
+            return View(customer);
         }
 
         // POST: Customer/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(Customer customer)
         {
-            try
+            if (!this.ModelState.IsValid)
             {
-                // TODO: Add update logic here
+                ViewBag.ErrorMessage = "Enter valid values!";
+                return View(customer);
+            }
+            _customerService.UpdateCustomer(customer);
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            return RedirectToAction("Index");
         }
 
         // GET: Customer/Delete/5
