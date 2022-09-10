@@ -10,6 +10,7 @@ using System.Web.Mvc;
 using PagedList;
 using System.Reflection;
 using System.Dynamic;
+using System.Web.UI;
 
 namespace CustomerDatalayerWebMVC.Controllers
 {
@@ -57,18 +58,16 @@ namespace CustomerDatalayerWebMVC.Controllers
 
         // POST: Customer/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(int page, Customer customer)
         {
-            try
+            if (!this.ModelState.IsValid)
             {
-                // TODO: Add insert logic here
+                ViewBag.ErrorMessage = "Enter valid values!";
+                return View(customer);
+            }
+            _customerService.Create(customer);
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            return RedirectToAction("Index", new { page });
         }
 
         // GET: Customer/Edit/5

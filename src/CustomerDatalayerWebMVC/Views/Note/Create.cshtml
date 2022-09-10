@@ -33,12 +33,15 @@
 
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Create" class="btn btn-primary" /> |
-            @Html.ActionLink("Back to Customer Details", "Details", "Customer", new { id = @Request.QueryString["customerId"] }, new { @class = "btn btn-primary" })
+            <input type="submit" value="Create" class="btn btn-primary" />
         </div>
     </div>
 </div>
 }
+
+<div>
+    @Html.ActionLink("Back to Customer Details", "Details", "Customer", new { id = @Request.QueryString["customerId"] })
+</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
