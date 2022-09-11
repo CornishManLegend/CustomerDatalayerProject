@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerDatalayerWebMVC", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerDatalayerWebMVC.Tests", "tests\CustomerDatalayerWebMVC.Tests\CustomerDatalayerWebMVC.Tests.csproj", "{46E58E60-C6A7-4677-8839-60929DBD7DCC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerDatalayer.Integration.Tests", "tests\CustomerDatalayer.Integration.Tests\CustomerDatalayer.Integration.Tests.csproj", "{3CCA9D56-5DFE-46D8-97E7-D805F2A7DBBE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,6 +39,10 @@ Global
 		{46E58E60-C6A7-4677-8839-60929DBD7DCC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{46E58E60-C6A7-4677-8839-60929DBD7DCC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{46E58E60-C6A7-4677-8839-60929DBD7DCC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3CCA9D56-5DFE-46D8-97E7-D805F2A7DBBE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3CCA9D56-5DFE-46D8-97E7-D805F2A7DBBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3CCA9D56-5DFE-46D8-97E7-D805F2A7DBBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3CCA9D56-5DFE-46D8-97E7-D805F2A7DBBE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -46,6 +52,7 @@ Global
 		{B96A0138-8514-4DE5-A27D-9190FA302793} = {42491DC7-3E5F-4C87-B5AF-CB6EA4ADFEC0}
 		{47E85AD2-13FC-48CB-93C6-9A7B29E408EE} = {E278DDF3-815B-4618-951A-A2C8FB163463}
 		{46E58E60-C6A7-4677-8839-60929DBD7DCC} = {42491DC7-3E5F-4C87-B5AF-CB6EA4ADFEC0}
+		{3CCA9D56-5DFE-46D8-97E7-D805F2A7DBBE} = {42491DC7-3E5F-4C87-B5AF-CB6EA4ADFEC0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9E87117F-D1B0-499E-B335-CC166D703DDD}

@@ -26,15 +26,15 @@ namespace CustomerDatalayerWebMVC.Tests.Controllers
         }
 
 
-        [TestMethod]
-        public void ShouldReturnListOfCustomers()
-        {
-            var controller = new CustomerController();
-            var customersResult = controller.Index(1);
-            var customersView = customersResult as ViewResult;
-            var customerModel = customersView.Model as PagedList<Customer>;
-            Assert.IsTrue(customerModel.Count != 0);
-        }
+        //[TestMethod]
+        //public void ShouldReturnListOfCustomers()
+        //{
+        //    var controller = new CustomerController();
+        //    var customersResult = controller.Index(1);
+        //    var customersView = customersResult as ViewResult;
+        //    var customerModel = customersView.Model as PagedList<Customer>;
+        //    Assert.IsTrue(customerModel.Count != 0);
+        //}
 
 
         //[TestMethod]
