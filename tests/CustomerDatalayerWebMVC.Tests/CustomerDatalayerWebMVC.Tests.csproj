@@ -90,11 +90,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\CustomerControllerTests.cs" />
+    <Compile Include="Controllers\AddressControllerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\PagedList.css" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\src\CustomerDatalayerWebMVC\CustomerDatalayerWebMVC.csproj">
@@ -105,13 +109,9 @@
       <Project>{c161502c-9045-40d4-9ea1-8f51e2aec24c}</Project>
       <Name>CustomerDatalayer</Name>
     </ProjectReference>
-    <ProjectReference Include="..\CustomerDatalayer.Integration.Tests\CustomerDatalayer.Integration.Tests.csproj">
-      <Project>{3cca9d56-5dfe-46d8-97e7-d805f2a7dbbe}</Project>
-      <Name>CustomerDatalayer.Integration.Tests</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\PagedList.css" />
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
