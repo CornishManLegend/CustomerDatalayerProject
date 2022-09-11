@@ -1,7 +1,5 @@
-﻿using Castle.Core.Resource;
-using CustomerDatalayer.BusinessEntities;
+﻿using CustomerDatalayer.BusinessEntities;
 using CustomerDatalayer.Repositories;
-using FluentAssertions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
