@@ -28,8 +28,8 @@ namespace CustomerDatalayerWebMVC.Tests.Controllers
         [TestMethod]
         public void ShouldBeAbleToCreateNote()
         {
-            var noteControllerMock = new Mock<INoteService>();
-            var noteController = new NoteController(noteControllerMock.Object);
+            var noteServiceMock = new Mock<INoteService>();
+            var noteController = new NoteController(noteServiceMock.Object);
             var result = noteController.Create(1, new Note()
             {
                 NoteId = 1,
@@ -43,8 +43,8 @@ namespace CustomerDatalayerWebMVC.Tests.Controllers
         [TestMethod]
         public void ShouldBeAbleToUpdateNote()
         {
-            var noteControllerMock = new Mock<INoteService>();
-            var noteController = new NoteController(noteControllerMock.Object);
+            var noteServiceMock = new Mock<INoteService>();
+            var noteController = new NoteController(noteServiceMock.Object);
             var result = noteController.Edit(1, 1, new Note()
             {
                 NoteId = 1,
@@ -66,9 +66,9 @@ namespace CustomerDatalayerWebMVC.Tests.Controllers
                 NoteRecord = "some note"
             };
 
-            var noteControllerMock = new Mock<INoteService>();
-            noteControllerMock.Setup(x => x.Create(address)).Returns(address);
-            var noteController = new NoteController(noteControllerMock.Object);
+            var noteServiceMock = new Mock<INoteService>();
+            noteServiceMock.Setup(x => x.Create(address)).Returns(address);
+            var noteController = new NoteController(noteServiceMock.Object);
             var result = noteController.Delete(1, 1) as RedirectToRouteResult;
 
             Assert.IsNotNull(result);

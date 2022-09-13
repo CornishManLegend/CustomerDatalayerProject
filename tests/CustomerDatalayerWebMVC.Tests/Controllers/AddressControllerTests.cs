@@ -29,8 +29,8 @@ namespace CustomerDatalayerWebMVC.Tests.Controllers
         [TestMethod]
         public void ShouldBeAbleToCreateAddress()
         {
-            var addressControllerMock = new Mock<IAddressService>();
-            var addressController = new AddressController(addressControllerMock.Object);
+            var addressServiceMock = new Mock<IAddressService>();
+            var addressController = new AddressController(addressServiceMock.Object);
             var result = addressController.Create(1, new Address()
             {
                 AddressLine1 = "Mulholland Drive",
@@ -49,8 +49,8 @@ namespace CustomerDatalayerWebMVC.Tests.Controllers
         [TestMethod]
         public void ShouldBeAbleToUpdateAddress()
         {
-            var addressControllerMock = new Mock<IAddressService>();
-            var addressController = new AddressController(addressControllerMock.Object);
+            var addressServiceMock = new Mock<IAddressService>();
+            var addressController = new AddressController(addressServiceMock.Object);
             var result = addressController.Edit(1, 1, new Address()
             {
                 AddressId = 1,
@@ -79,9 +79,9 @@ namespace CustomerDatalayerWebMVC.Tests.Controllers
                 Country = "USA"
             };
 
-            var addressControllerMock = new Mock<IAddressService>();
-            addressControllerMock.Setup(x => x.Create(address)).Returns(address);
-            var addressController = new AddressController(addressControllerMock.Object);
+            var addressServiceMock = new Mock<IAddressService>();
+            addressServiceMock.Setup(x => x.Create(address)).Returns(address);
+            var addressController = new AddressController(addressServiceMock.Object);
             var result = addressController.Delete(1,1) as RedirectToRouteResult; 
 
             Assert.IsNotNull(result);

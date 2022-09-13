@@ -28,20 +28,20 @@ namespace CustomerDatalayerWebMVC.Tests.Controllers
         }
 
 
-        [TestMethod]
-        public void ShouldBeAbleToCreateRedirect()
-        {
-            var customerController = new CustomerController();
-            var result = customerController.Create(1, new Customer()
-            {
-                FirstName = "testJohn",
-                LastName = "testWayne",
-                PhoneNumber = "123456789111111",
-                Email = "johnWayne@gmail.com",
-                TotalPurchasesAmount = 1
-            }) as RedirectToRouteResult;
-            Assert.IsNotNull(result);
-        }
+        //[TestMethod]
+        //public void ShouldBeAbleToCreateRedirect()
+        //{
+        //    var customerController = new CustomerController();
+        //    var result = customerController.Create(1, new Customer()
+        //    {
+        //        FirstName = "testJohn",
+        //        LastName = "testWayne",
+        //        PhoneNumber = "123456789111111",
+        //        Email = "johnWayne@gmail.com",
+        //        TotalPurchasesAmount = 1
+        //    }) as RedirectToRouteResult;
+        //    Assert.IsNotNull(result);
+        //}
 
 
         [TestMethod]
@@ -70,8 +70,8 @@ namespace CustomerDatalayerWebMVC.Tests.Controllers
         [TestMethod]
         public void ShouldBeAbleToCreateCustomer()
         {
-            var customerControllerMock = new Mock<ICustomerService>();
-            var customerController = new CustomerController(customerControllerMock.Object);
+            var customerServiceMock = new Mock<ICustomerService>();
+            var customerController = new CustomerController(customerServiceMock.Object);
             customerController.Create();
             var customer = new Customer()
             {
@@ -83,15 +83,15 @@ namespace CustomerDatalayerWebMVC.Tests.Controllers
             };
             var result = customerController.Create(1, customer) as RedirectToRouteResult;
             Assert.IsNotNull(result);
-            customerControllerMock.Verify(x => x.Create(customer));
+            customerServiceMock.Verify(x => x.Create(customer));
         }
 
 
         [TestMethod]
         public void ShouldBeAbleToEditCustomer()
         {
-            var customerControllerMock = new Mock<ICustomerService>();
-            var customerController = new CustomerController(customerControllerMock.Object);
+            var customerServiceMock = new Mock<ICustomerService>();
+            var customerController = new CustomerController(customerServiceMock.Object);
             var customer = new Customer()
             {
                 FirstName = "John",
@@ -103,15 +103,15 @@ namespace CustomerDatalayerWebMVC.Tests.Controllers
             customerController.Edit(5);
             var result = customerController.Edit(customer) as RedirectToRouteResult;
             Assert.IsNotNull(result);
-            customerControllerMock.Verify(x => x.UpdateCustomer(customer));
+            customerServiceMock.Verify(x => x.UpdateCustomer(customer));
         }
 
 
         [TestMethod]
         public void ShouldBeAbleToDeleteCustomer()
         {
-            var customerControllerMock = new Mock<ICustomerService>();
-            var customerController = new CustomerController(customerControllerMock.Object);
+            var customerServiceMock = new Mock<ICustomerService>();
+            var customerController = new CustomerController(customerServiceMock.Object);
             customerController.Delete(10);
             var result = customerController.Delete(10, new Customer
             {
@@ -122,7 +122,7 @@ namespace CustomerDatalayerWebMVC.Tests.Controllers
                 TotalPurchasesAmount = 10
             }) as RedirectToRouteResult;
             Assert.IsNotNull(result);
-            customerControllerMock.Verify(x => x.DeleteCustomer(10));
+            customerServiceMock.Verify(x => x.DeleteCustomer(10));
         }
 
 
@@ -139,14 +139,15 @@ namespace CustomerDatalayerWebMVC.Tests.Controllers
                 TotalPurchasesAmount = 10
             };
 
-            var customerControllerMock = new Mock<ICustomerService>();
-            customerControllerMock.Setup(x => x.Create(customer)).Returns(customer);
-            customerControllerMock.Setup(x => x.GetCustomer(customer.CustomerId)).Returns(customer);
-            var customerController = new CustomerController(customerControllerMock.Object);
-
-            var controller = new CustomerController(customerControllerMock.Object);
-            var result = controller.Details(customer.CustomerId);
+            var customerServiceMock = new Mock<ICustomerService>();
+            customerServiceMock.Setup(x => x.Create(customer)).Returns(customer);
+            customerServiceMock.Setup(x => x.GetCustomer(customer.CustomerId)).Returns(customer);
+            var customerController = new CustomerController(customerServiceMock.Object);
+            var result = customerController.Details(customer.CustomerId);
             var resultView = result as ViewResult;
+
+            var DetailsModel = resultView.Model;
+
 
             Assert.IsNotNull(resultView);
         }
